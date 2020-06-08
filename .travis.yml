@@ -1,5 +1,11 @@
 language: python
 python:
   - "3.8.2"
-script:
-  - python3 -m unittest discover
+before_install:
+  - python --version
+  - pip install -U pip
+  - pip install -U pytest
+  - pip install codecov
+script: pytest -q test_wallet.py
+after_success:
+  - codecov
